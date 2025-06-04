@@ -31,4 +31,4 @@ jobs:
     - name: Run Ansible Playbook
       env:
         ANSIBLE_HOST_KEY_CHECKING: False
-      run: ansible-playbook deploy/deploy.yml -i deploy/inventory.ini --extra-vars "DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}
+      run: ansible-playbook deploy/deploy.yml -i deploy/inventory.ini --extra-vars "DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}"
