@@ -14,10 +14,12 @@
 # CMD ["serve", "-s", "build", "-l", "5000"]
 
 
-FROM node:18
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
+FROM node:latest
+RUN mkdir /app/
+WORKDIR app/
+COPY . /app/
+RUN  npm install
+
 EXPOSE 5000
-CMD ["npm", "start"]
+
+CMD ["npm" , "start"]
