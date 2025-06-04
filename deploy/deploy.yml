@@ -21,7 +21,7 @@
 
     - name: Copy NGINX config
       copy:
-        src: ./nginx.conf
+        src: "{{ playbook_dir }}/../nginx.conf"
         dest: /etc/nginx/sites-available/default
         owner: root
         group: root
