@@ -17,8 +17,8 @@ jobs:
 
     - name: Build and push Docker image
       run: |
-        docker build -t ${{ secrets.DOCKER_USERNAME }}/react-app:latest .
-        docker push ${{ secrets.DOCKER_USERNAME }}/react-app:latest
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/react-app-demo:latest .
+        docker push ${{ secrets.DOCKER_USERNAME }}/react-app-demo:latest
 
     - name: Install Ansible
       run: sudo apt install -y ansible
