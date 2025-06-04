@@ -29,4 +29,6 @@ jobs:
         chmod 600 key.pem
 
     - name: Run Ansible Playbook
+      env:
+        ANSIBLE_HOST_KEY_CHECKING: False
       run: ansible-playbook deploy/deploy.yml -i deploy/inventory.ini
