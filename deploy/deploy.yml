@@ -1,0 +1,41 @@
+---
+- name: Deploy Dockerized React App
+  hosts: appserver
+  become: true
+
+  tasks:
+    - name: Install Docker & NGINX
+      apt:
+        name: ['docker.io', 'nginx']
+        state: present
+        update_cache: yes
+
+    - name: Enable Docker and NGINX
+      systemd:
+        name: "{{ item }}"
+        enabled: yes
+        state: started
+      loop:
+        - docker
+        - nginx
+
+    - name: Copy NGINX config
+      copy:
+        src: ./nginx.conf
+        dest: /etc/nginx/sites-available/default
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: Restart NGINX
+      systemd:
+        name: nginx
+        state: restarted
+
+    - name: Remove existing Docker container
+      shell: docker rm -f react-app || true
+
+    - name: Run latest Docker image
+      shell: |
+        docker pull YOUR_DOCKER_USERNAME/react-app:latest
+        docker run -d --name react-app -p 5000:5000 YOUR_DOCKER_USERNAME/react-app:latest
