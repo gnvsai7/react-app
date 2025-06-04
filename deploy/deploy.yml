@@ -38,4 +38,4 @@
     - name: Run latest Docker image
       shell: |
         docker pull {{DOCKER_USERNAME}}/react-app:latest
-        docker run -d --name react-app -p 5000:5000 {{DOCKER_USERNAME}}/react-app:latest
+        docker run -d --name react-app -p 3000:3000 {{DOCKER_USERNAME}}/react-app:latest
