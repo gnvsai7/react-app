@@ -20,8 +20,6 @@
         - nginx
 
     - name: Copy NGINX config
-      shell: |
-        ls
       copy:
         src: ./nginx.conf
         dest: /etc/nginx/sites-available/default
